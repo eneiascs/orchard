@@ -1,4 +1,4 @@
-package model;
+package com.eneiascs.orchard.model;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
