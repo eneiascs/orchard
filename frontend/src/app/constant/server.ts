@@ -1,10 +1,10 @@
 import { Host } from '@angular/core';
 
-export class Server {
+export class ServerConstants {
     // Dev Env
-    public host: string = 'http://localhost:8080';
+    public host = 'http://localhost:8080';
 
-    public client: string = 'http://localhost:4200';
+    public client = 'http://localhost:4200';
     
     public userPicture: string = `${this.host}/image/user`;
 
