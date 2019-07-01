@@ -1,11 +1,11 @@
 .navbar-nav {
-    flex-direction: row;
+
+    flex-direction: row;    
 }
-  
-.bt{
+.bt {
     width: 100%;
 }
 .active {
     border-bottom: 3px solid white;
 }
-  
+

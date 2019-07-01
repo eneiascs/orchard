@@ -1,14 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpEventType } from '@angular/common/http';
+
 import { Subscription } from 'rxjs';
+import { User } from '../model/user';
+import { Router } from '@angular/router';
 import { AlertService } from '../service/alert.service';
 import { AccountService } from '../service/account.service';
-import { LoadingService } from '../service/loading.service';
 import { PostService } from '../service/post.service';
-import { AlertType } from '../enum/alert-type.enum';
-import { User } from '../model/user';
+import { LoadingService } from '../service/loading.service';
 import { Post } from '../model/post';
+import { HttpEventType } from '@angular/common/http';
+import { AlertType } from '../enum/alert-type.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -22,17 +23,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   host: string;
   userHost: string;
   postHost: string;
-  postPicture: File;
+  showNavbar: boolean;
+  postPicture:  File;
   userName: string;
   userLoggedIn: boolean;
-  showNavbar: boolean;
+  showNavBar: boolean;
   showSuccessAlert: boolean;
   photoName: string;
+  location = null;
   latitude: any;
   longitude: any;
-  location = null;
   progress: number;
-  newPostURL: string;
+  newPostUrl: string;
   clientHost: string;
   postFail: boolean;
 
@@ -48,6 +50,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.loadingService.isLoading.next(true);
     this.host = this.postService.host;
     this.clientHost = this.postService.clientHost;
+
     this.userHost = this.postService.userHost;
     this.postHost = this.postService.postHost;
     this.showNavbar = true;
@@ -60,6 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.showNavbar = false;
       this.loadingService.isLoading.next(false);
     }
+
   }
 
   getUserInfo(username: string): void {
@@ -97,9 +101,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getSearchUserProfile(username: string): void {
+
     const element: HTMLElement = document.getElementById(
       'closeSearchModal'
     ) as HTMLElement;
+
     element.click();
     this.router.navigate(['/profile', username]);
     setTimeout(() => {
