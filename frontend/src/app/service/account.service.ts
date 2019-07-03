@@ -25,7 +25,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   login(user: User): Observable<HttpErrorResponse | HttpResponse<any>> {
-    return this.http.post<HttpErrorResponse | HttpResponse<any>>(`${this.host}/user/login`, user, { observe: 'response' });
+    return this.http.post<HttpErrorResponse | HttpResponse<any>>(`${this.host}/login`, user, { observe: 'response' });
   }
 
   register(user: User): Observable<User | HttpErrorResponse> {
@@ -75,7 +75,7 @@ export class AccountService {
   }
 
   searchUsers(username: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.host}/user/findByUSername/${username}`);    
+    return this.http.get<User[]>(`${this.host}/user/findByUsername/${username}`);    
   }
 
   getLocation(): string {

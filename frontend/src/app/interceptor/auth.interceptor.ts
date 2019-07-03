@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private accountService:AccountService){}
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if(req.url.includes(`${this.host}/user/login`)){
+        if(req.url.includes(`${this.host}/login`)){
             return next.handle(req);
         }
 
@@ -27,8 +27,12 @@ export class AuthInterceptor implements HttpInterceptor {
         
         this.accountService.loadToken();
         const token = this.accountService.getToken();
-        const request = req.clone({ setHeaders: { Authorization: token}});
-
-        return next.handle(request);
+        if(token){
+            const request = req.clone({ setHeaders: { Authorization: token}});
+            return next.handle(request);
+        }
+        return next.handle(req);
+        
+        
     }
 }

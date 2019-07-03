@@ -30,7 +30,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/home');
       }
     } else {
-      this.router.navigateByUrl('/resetpassword');
+      this.router.navigateByUrl('/resetPassword');
     }
   }
 

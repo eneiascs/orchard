@@ -132,7 +132,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           let postId: number = response.id;
           this.savePicture(this.postPicture);
           this.loadingService.isLoading.next(false);
-          this.newPostURL = `${this.clientHost}/post/${postId}`;
+          this.newPostUrl = `${this.clientHost}/post/${postId}`;
         },
         error => {
           console.log(error);
@@ -165,7 +165,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showSuccessAlert = true;
     setTimeout(() => {
       this.showSuccessAlert = false;
-      this.newPostURL = null;
+      this.newPostUrl = null;
     }, second * 1000);
   }
 

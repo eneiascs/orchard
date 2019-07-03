@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.accountService.login(user).subscribe(
         response => {
+          console.log(response);
           const token: string = response.headers.get('Authorization');
           this.accountService.saveToken(token);
           if( this.accountService.redirectUrl) {
