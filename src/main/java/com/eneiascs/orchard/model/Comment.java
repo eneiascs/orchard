@@ -1,5 +1,6 @@
 package com.eneiascs.orchard.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,11 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8577332454602198719L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(updatable = false, nullable = false)
-	private Integer id;
+	private Long id;
 	private String username;
 	
 	@Column(columnDefinition = "text")
@@ -23,16 +28,16 @@ public class Comment {
 	public Comment() {
 		
 	}
-	public Comment(Integer id, String username, String content, Date postedDate) {
+	public Comment(Long id, String username, String content, Date postedDate) {
 		this.id = id;
 		this.username = username;
 		this.content = content;
 		this.postedDate = postedDate;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {

@@ -1,5 +1,7 @@
 package com.eneiascs.orchard.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +13,16 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
-public class UserRole {
+public class UserRole implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4919501935538133715L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(updatable = false, nullable = false)
-	private long userRoleId;
+	private Long userRoleId;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -29,16 +36,15 @@ public class UserRole {
 	public UserRole() {
 		
 	}
-	public UserRole(long userRoleId, AppUser appUser, Role role) {
+	public UserRole(AppUser appUser, Role role) {
 		
-		this.userRoleId = userRoleId;
 		this.appUser = appUser;
 		this.role = role;
 	}
-	public long getUserRoleId() {
+	public Long getUserRoleId() {
 		return userRoleId;
 	}
-	public void setUserRoleId(long userRoleId) {
+	public void setUserRoleId(Long userRoleId) {
 		this.userRoleId = userRoleId;
 	}
 	public AppUser getAppUser() {
@@ -52,6 +58,10 @@ public class UserRole {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return role.getName();
 	}
 	
 	
